@@ -30,10 +30,11 @@ finish-args:
   - --socket=wayland
   - --device=dri
   - --share=network
-  - --filesystem=home
+  - --filesystem=home:ro
   # Webcam (OpenCV /dev/video*): enable with:
   #   flatpak override --user --device=all engineering.mess.Blitz
-
+  # home:ro — DnD/open datasets under $HOME (Flathub exception with rationale).
+  # Writes use QFileDialog getSaveFileName (portal); no write into dropped folders.
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
 
@@ -57,5 +58,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/PiMaV/BLITZ.git
-        tag: v2.0.2
-        commit: 0a989c8ffc3f432483c0c72f59e7f0adf53d389d
+        tag: v2.0.3
+        commit: 0f0fac9773d4f1fefc77e5f5f33605f08a5ac179
